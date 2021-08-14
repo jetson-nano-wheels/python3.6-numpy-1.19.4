@@ -1,0 +1,21 @@
+name: wheel_build
+
+on:
+  push:
+    branches:
+      - master
+      - feature-github-wheel-build
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.6.9'
+    - name: Install build dependencies
+      run: pip install -U 'setuptools>=57.4.0' 'wheel>=0.37.0' 'build>=0.6.0'
+    - name: Build
+      run: ~/build.sh
