@@ -14,7 +14,7 @@ pip install 'https://github.com/jetson-nano-wheels/python3.6-numpy-1.19.4/releas
 
 ## How to contribute
 
-  1. [Fork this repo](/fork)
+  1. [Fork this repo](https://github.com/jetson-nano-wheels/python3.6-numpy-1.19.4/fork)
   2. Add a branch for your new feature.
   3. Run the `init.sh` script.
 
