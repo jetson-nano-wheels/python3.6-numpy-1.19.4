@@ -14,9 +14,6 @@ build_version="0.6.0"
 
 ################################################################################
 
-# See end of this script for explanation of this env var.
-export OPENBLAS_CORETYPE=ARMV8
-
 # Fail if desired Python version not available.
 python${python_version} --version > /dev/null
 
@@ -71,7 +68,7 @@ set +e
 current_numpy_version=$(echo -n "${installed}" | grep -E '^numpy[=><]+' | sed -E -e 's/^.*[=><]+//')
 if [[ "x${current_numpy_version}" == "x" ]] ; then
     set -e
-    pip install numpy==${numpy_version}
+    pip download --no-binary ':all:' numpy==${numpy_version}
 else
     set -e
     read -r current_version_maj current_version_min current_version_patch \
@@ -82,39 +79,11 @@ else
 	if [[ $(echo $((${current_version_min} < ${desired_version_min}))) == "0" ]] ; then
 	    if [[ $(echo $((${current_version_patch} < ${desired_version_patch}))) == "0" ]] ; then
 		:
-	    else pip install numpy==${numpy_version} ; fi
-	else pip install numpy==${numpy_version} ; fi
-    else pip install numpy==${numpy_version} ; fi
+	    else pip download --no-binary ':all:' numpy==${numpy_version} ; fi
+	else pip download --no-binary ':all:' numpy==${numpy_version} ; fi
+    else pip download --no-binary ':all:' numpy==${numpy_version} ; fi
 fi
 set -e
-
-
-# echo "Checking Python can import numpy successfully."
-# set +e +u +p pipefail
-# python -c 'import numpy' 2>&1 > /dev/null
-# if [[ "$?" != "0" ]] ; then
-#     echo
-#     echo "One or more packages failed."
-#     echo
-#     exit 1
-# fi
-# set -euo pipefail
-
-
-# set +e
-# installed=$(pip list --local --format freeze --exclude pkg_resources)
-# numpy_current_version=$(echo -n "${installed}" | grep -E '^numpy[=><]1.19.5+' | sed -E -e 's/^.*[=><]+//')
-# if [[ "${numpy_current_version}" == "1.19.5" ]] ; then
-#     echo "Finished! But... there is a BUG in numpy 1.19.5 which you are using."
-#     echo "See: https://github.com/numpy/numpy/issues/18131"
-#     echo "Workaround: https://forums.developer.nvidia.com/t/cupy-crashes-on-jetson-nano/169103/3"
-#     echo "Do this:"
-#     echo "    export OPENBLAS_CORETYPE=ARMV8"
-#     echo "before running Python scripts/REPLs/etc."
-# else
-#     echo "Finished!"
-# fi
-# set -e
 
 
 # Deactivate virtual env (and prevent error about unbound variables).

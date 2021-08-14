@@ -1,7 +1,8 @@
 #!/bin/bash
 
-rm -rf dist/* 2>/dev/null
-
 set -euo pipefail
 
-./build.sh
+./init.sh
+source venv/bin/activate
+rm -rf dist/*
+pip wheel --no-binary ':all:' --no-deps numpy==1.19.4 -w dist
