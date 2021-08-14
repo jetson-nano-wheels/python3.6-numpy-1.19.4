@@ -1,22 +1,22 @@
 # python3.6-numpy-1.19.4
 
+Numpy 1.19.4 for Python 3.6 running on the Nvidia Jetson Tegra.
+
+
 ## How to use
 
-If you're running Python 3.6 and have `pip` (in a suitable virtual environment) this should work:
+If you have `pip` (which should be run in a suitable virtual environment) this should work:
 
 ```sh
-pip install -f 'https://github.com/jetson-nano-wheels/python3.6-numpy-1.19.4'
+pip install 'https://github.com/jetson-nano-wheels/python3.6-numpy-1.19.4/releases/download/0.0.1/numpy-1.19.4-cp36-cp36m-manylinux2014_aarch64.whl'
 ```
 
 
 ## How to contribute
 
-  1. Clone this repo.
-  2. Add a feature branch.
+  1. [Fork this repo](/fork)
+  2. Add a branch for your new feature.
   3. Run the `init.sh` script.
-  4. Add your stuff.
-  5. Optionally, add an appropriate link in the page [pip.md](pip.md).
-  6. Send a pull request.
 
 Like this:
 
@@ -27,4 +27,4 @@ git checkout -b feature-my-fancy-addition
 ./init.sh
 ```
 
-...and the rest is on my `TODO` list 😃
+After that, do your edits, commit and push to your repo, and send a pull-request if you like 😃
