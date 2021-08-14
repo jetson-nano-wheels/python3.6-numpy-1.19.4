@@ -100,8 +100,7 @@ if [[ "$?" != "0" ]] ; then
 fi
 set -euo pipefail
 
-echo  
-
+set +e
 installed=$(pip list --local --format freeze --exclude pkg_resources)
 numpy_current_version=$(echo -n "${installed}" | grep -E '^numpy[=><]1.19.5+' | sed -E -e 's/^.*[=><]+//')
 if [[ "${numpy_current_version}" == "1.19.5" ]] ; then
@@ -114,7 +113,7 @@ if [[ "${numpy_current_version}" == "1.19.5" ]] ; then
 else
     echo "Finished!"
 fi
-echo
+set -e
 
 # Deactivate virtual env (and prevent error about unbound variables).
 set +u

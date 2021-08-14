@@ -1,0 +1,1 @@
+[https://github.com/jetson-nano-wheels/python3.6-numpy-1.19.4/releases/download/0.0.1/numpy-1.19.4-cp36-cp36m-manylinux2014_aarch64.whl](https://github.com/jetson-nano-wheels/python3.6-numpy-1.19.4/releases/download/0.0.1/numpy-1.19.4-cp36-cp36m-manylinux2014_aarch64.whl)
