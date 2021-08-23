@@ -68,7 +68,7 @@ set +e
 current_numpy_version=$(echo -n "${installed}" | grep -E '^numpy[=><]+' | sed -E -e 's/^.*[=><]+//')
 if [[ "x${current_numpy_version}" == "x" ]] ; then
     set -e
-    pip download --no-binary ':all:' numpy==${numpy_version}
+    pip install --no-binary ':all:' numpy==${numpy_version}
 else
     set -e
     read -r current_version_maj current_version_min current_version_patch \
@@ -79,9 +79,9 @@ else
 	if [[ $(echo $((${current_version_min} < ${desired_version_min}))) == "0" ]] ; then
 	    if [[ $(echo $((${current_version_patch} < ${desired_version_patch}))) == "0" ]] ; then
 		:
-	    else pip download --no-binary ':all:' numpy==${numpy_version} ; fi
-	else pip download --no-binary ':all:' numpy==${numpy_version} ; fi
-    else pip download --no-binary ':all:' numpy==${numpy_version} ; fi
+	    else pip install --no-binary ':all:' numpy==${numpy_version} ; fi
+	else pip install --no-binary ':all:' numpy==${numpy_version} ; fi
+    else pip install --no-binary ':all:' numpy==${numpy_version} ; fi
 fi
 set -e
 
